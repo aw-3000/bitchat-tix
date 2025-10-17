@@ -52,6 +52,7 @@ struct ContentView: View {
     @State private var showLocationNotes = false
     @State private var notesGeohash: String? = nil
     @State private var sheetNotesCount: Int = 0
+    @State private var showTicketMarketplace = false
     @ScaledMetric(relativeTo: .body) private var headerHeight: CGFloat = 44
     @ScaledMetric(relativeTo: .subheadline) private var headerPeerIconSize: CGFloat = 11
     @ScaledMetric(relativeTo: .subheadline) private var headerPeerCountFontSize: CGFloat = 12
@@ -227,6 +228,10 @@ struct ContentView: View {
             }
 
             Button("common.cancel", role: .cancel) {}
+        }
+        .sheet(isPresented: $showTicketMarketplace) {
+            TicketMarketplaceView()
+                .environmentObject(viewModel)
         }
         .alert("content.alert.bluetooth_required.title", isPresented: $viewModel.showBluetoothAlert) {
             Button("content.alert.bluetooth_required.settings") {
@@ -1276,6 +1281,14 @@ struct ContentView: View {
                         String(localized: "content.accessibility.open_unread_private_chat", comment: "Accessibility label for the unread private chat button")
                     )
                 }
+                // Ticket marketplace icon
+                Button(action: { showTicketMarketplace = true }) {
+                    Image(systemName: "ticket.fill")
+                        .font(.bitchatSystem(size: 12))
+                        .foregroundColor(textColor)
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel("Ticket Marketplace")
                 // Notes icon (mesh only and when location is authorized), to the left of #mesh
                 if case .mesh = locationManager.selectedChannel, locationManager.permissionState == .authorized {
                     Button(action: {
