@@ -28,6 +28,13 @@ struct CreateTicketListingView: View {
     @State private var description = ""
     @State private var currency = "USD"
     
+    private var currentGeohash: String? {
+        if case .location(let channel) = LocationChannelManager.shared.selectedChannel {
+            return channel.geohash
+        }
+        return nil
+    }
+    
     var body: some View {
         NavigationView {
             Form {
@@ -114,14 +121,6 @@ struct CreateTicketListingView: View {
     private func createListing() {
         guard let price = Decimal(string: askingPrice) else { return }
         let origPrice = Decimal(string: originalPrice)
-        
-        // Get current geohash from location manager
-        let currentGeohash: String? = {
-            if case .location(let channel) = LocationChannelManager.shared.selectedChannel {
-                return channel.geohash
-            }
-            return nil
-        }()
         
         let ticket = Ticket(
             eventName: eventName,
