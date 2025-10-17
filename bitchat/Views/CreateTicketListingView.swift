@@ -115,6 +115,14 @@ struct CreateTicketListingView: View {
         guard let price = Decimal(string: askingPrice) else { return }
         let origPrice = Decimal(string: originalPrice)
         
+        // Get current geohash from location manager
+        let currentGeohash: String? = {
+            if case .location(let channel) = LocationChannelManager.shared.selectedChannel {
+                return channel.geohash
+            }
+            return nil
+        }()
+        
         let ticket = Ticket(
             eventName: eventName,
             eventDate: eventDate,
@@ -128,13 +136,13 @@ struct CreateTicketListingView: View {
             currency: currency,
             eventType: eventType,
             description: description.isEmpty ? nil : description,
-            geohash: chatViewModel.currentGeohash // Use current location
+            geohash: currentGeohash
         )
         
         let listing = marketplace.createListing(
             ticket: ticket,
             listingType: listingType,
-            myPeerID: chatViewModel.myPeerID,
+            myPeerID: chatViewModel.meshService.myPeerID,
             myNickname: chatViewModel.nickname
         )
         

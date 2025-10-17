@@ -187,7 +187,7 @@ struct TicketDetailsView: View {
     private func expressInterest() {
         let transaction = marketplace.expressInterest(
             in: listing,
-            buyerPeerID: chatViewModel.myPeerID,
+            buyerPeerID: chatViewModel.meshService.myPeerID,
             buyerNickname: chatViewModel.nickname
         )
         

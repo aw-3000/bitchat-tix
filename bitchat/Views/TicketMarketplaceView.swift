@@ -114,7 +114,7 @@ struct TicketMarketplaceView: View {
     }
     
     var filteredListings: [TicketListing] {
-        var result = marketplace.availableListings(excludingPeerID: chatViewModel.myPeerID)
+        var result = marketplace.availableListings(excludingPeerID: chatViewModel.meshService.myPeerID)
         
         if let eventType = selectedEventType {
             result = result.filter { $0.ticket.eventType == eventType }
