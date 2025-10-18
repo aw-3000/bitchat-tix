@@ -1,8 +1,8 @@
 <img width="256" height="256" alt="icon_128x128@2x" src="https://github.com/user-attachments/assets/90133f83-b4f6-41c6-aab9-25d0859d2a47" />
 
-## bitchat
+## bitchat → TicketExchange
 
-A decentralized peer-to-peer messaging app with dual transport architecture: local Bluetooth mesh networks for offline communication and internet-based Nostr protocol for global reach. No accounts, no phone numbers, no central servers. It's the side-groupchat.
+A decentralized peer-to-peer ticket marketplace with dual transport architecture: local Bluetooth mesh networks for in-person ticket exchanges and internet-based Nostr protocol for global reach. No middlemen, no massive fees. It's the modern "no scalping zone."
 
 [bitchat.free](http://bitchat.free)
 
@@ -17,6 +17,15 @@ This project is released into the public domain. See the [LICENSE](LICENSE) file
 
 ## Features
 
+### 🎟️ Decentralized Ticket Marketplace
+- **P2P Ticket Exchange**: Buy and sell event tickets directly without intermediaries
+- **No Platform Fees**: Keep 100% of your money - no Ticketmaster or StubHub cuts
+- **Location-Based Discovery**: Find tickets for events near you using geohash channels
+- **Modern "No Scalping Zone"**: Like the old stadium meetup spots, but decentralized
+- **Secure Transactions**: Coordinate exchanges over encrypted P2P channels
+- **Multiple Event Types**: Concerts, sports, theater, festivals, conferences, and more
+
+### 💬 Built on Proven P2P Technology
 - **Dual Transport Architecture**: Bluetooth mesh for offline + Nostr protocol for internet-based messaging
 - **Location-Based Channels**: Geographic chat rooms using geohash coordinates over global Nostr relays
 - **Intelligent Message Routing**: Automatically chooses best transport (Bluetooth → Nostr fallback)
@@ -91,6 +100,28 @@ Private messages use **intelligent transport selection**:
    - Automatic delivery when connection established
 
 For detailed protocol documentation, see the [Technical Whitepaper](WHITEPAPER.md).
+
+## How the Ticket Marketplace Works
+
+The decentralized ticket exchange leverages the same P2P infrastructure as the messaging app:
+
+### Listing Tickets
+1. **Create a Listing**: Sellers create listings with event details (name, date, venue, section, price)
+2. **Broadcast to Network**: Listings are shared over the current channel (Bluetooth mesh or Nostr geohash)
+3. **Location-Based Discovery**: Buyers discover listings in their area through geohash channels
+
+### Finding and Buying Tickets
+1. **Browse Available Tickets**: Filter by event type, location, or search by name
+2. **Contact Seller**: Initiate a private P2P chat (Bluetooth or Nostr) with the seller
+3. **Negotiate Terms**: Discuss price, meetup location, and payment method
+4. **Complete Exchange**: Meet in person or coordinate remote transfer
+
+### Key Advantages
+- **No Platform Fees**: Unlike Ticketmaster/StubHub (20-30% fees), keep 100% of your money
+- **Direct Communication**: Chat directly with buyers/sellers using encrypted P2P messaging
+- **Local & Global**: Find tickets locally (Bluetooth mesh) or worldwide (Nostr)
+- **Privacy First**: No accounts, no tracking, no data mining
+- **Community-Driven**: Like the original "no scalping zones" outside stadiums, but decentralized
 
 ## Setup
 
