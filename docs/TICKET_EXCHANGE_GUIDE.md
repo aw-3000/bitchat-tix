@@ -53,7 +53,13 @@ The decentralized ticket marketplace transforms BitChat into a peer-to-peer tick
    - Transfer method (mobile transfer, paper tickets, etc.)
    - Special conditions
 
-5. **Post the Listing**
+5. **Companion Seating** (New!)
+   - Toggle "I'm attending & looking for a compatible companion" if you're selling an extra ticket but plan to attend yourself
+   - Add companion preferences (e.g., "20s-30s, love indie rock, chill vibe")
+   - This helps you find someone you'd enjoy sitting next to instead of ending up next to a stranger
+   - Your listing will be marked with a 👥 COMPANION badge
+
+6. **Post the Listing**
    - Your listing broadcasts to the current channel
    - Available on both Bluetooth mesh and Nostr channels
 
@@ -64,20 +70,24 @@ The decentralized ticket marketplace transforms BitChat into a peer-to-peer tick
    - Browse listings in the "Browse" tab
    - Use search to find specific events
    - Filter by event type (concerts, sports, etc.)
+   - Filter for "👥 Companion Seats" to find sellers looking for compatible companions
 
 2. **Find What You Want**
    - Search by event name or venue
    - Check location, date, and price
    - See section/seat details
    - View seller's nickname
+   - Look for 👥 COMPANION badge if you want to meet someone compatible
 
 3. **Contact the Seller**
    - Tap a listing to see details
+   - If it's a companion listing, read their preferences to see if you're a good match
    - Tap "Contact Seller" to start a private chat
    - Or tap "I'm Interested" to express interest
 
 4. **Negotiate and Arrange**
    - Discuss price if needed
+   - For companion listings: chat to get to know each other and ensure compatibility
    - Agree on meetup location and time
    - Coordinate payment method (cash, Venmo, etc.)
    - Confirm ticket transfer method
@@ -87,6 +97,7 @@ The decentralized ticket marketplace transforms BitChat into a peer-to-peer tick
    - Verify tickets are legitimate
    - Complete payment
    - Transfer tickets
+   - Enjoy the event together if it's a companion listing!
 
 ### Creating "Wanted" Listings
 
@@ -97,6 +108,83 @@ Looking for tickets to a sold-out show? Create a buy listing:
 3. Fill in event details and your offer price
 4. Post the listing
 5. Sellers with available tickets can contact you
+
+## The Companion Seating Feature
+
+### The Problem
+
+You bought two tickets to see your favorite band, but your friend bailed. Now you have an extra ticket and face a dilemma:
+- Sell it to anyone and risk sitting next to someone incompatible (loud talker, different music taste, etc.)
+- Go alone and leave the seat empty
+- Skip the show entirely
+
+### The Solution: Companion Seating
+
+Companion seating lets you indicate that you're **attending the event yourself** and looking for a **compatible person** to buy your extra ticket. Instead of ending up next to a random stranger, you can:
+
+1. **Screen potential buyers** through chat before committing
+2. **Share your preferences** (age range, interests, vibe)
+3. **Find like-minded fans** who will enhance your experience
+4. **Make new friends** while keeping 100% of your ticket money
+
+### How It Works
+
+**For Sellers:**
+1. When creating a listing, toggle "I'm attending & looking for a compatible companion"
+2. Add your preferences (e.g., "Mid-20s, die-hard Radiohead fan, chill vibes")
+3. Your listing gets a special 👥 COMPANION badge
+4. Chat with interested buyers to ensure compatibility
+5. Meet up and enjoy the show together!
+
+**For Buyers:**
+1. Filter for "👥 Companion Seats" in the marketplace
+2. Read seller's companion preferences
+3. If you match, reach out via private chat
+4. Get to know each other before committing
+5. Complete the transaction and make a new concert buddy!
+
+### Real-World Examples
+
+**Example 1: Concert Companion**
+> "25F, have an extra ticket to Phoebe Bridgers. Looking for another fan in their 20s who loves sad girl indie. Let's cry together 😭🎵"
+
+**Example 2: Sports Fan**
+> "30M Lakers fan, extra ticket for tonight's game. Looking for someone who actually watches basketball and won't be on their phone the whole time. Let's go Lakers! 🏀"
+
+**Example 3: Festival Friends**
+> "23F going to Coachella alone, have 2 camping passes. Looking for other solo festival-goers who want to camp together. Good vibes only! 🌵✨"
+
+### Why This Matters
+
+The traditional ticket marketplace treated seats as commodities, ignoring the social aspect of live events. But experiences are better with the right company! Companion seating brings back the community aspect of live events while maintaining the benefits of P2P exchange:
+
+- **Social Compatibility**: Find people you'll actually enjoy sitting with
+- **Safety**: Chat and vet buyers before meeting
+- **Enhanced Experience**: Turn a solo experience into a shared memory
+- **Zero Fees**: Still keep 100% of your money
+- **New Connections**: Make friends who share your interests
+
+### Tips for Companion Listings
+
+**Creating Good Preferences:**
+- Be specific but friendly
+- Mention age range, interests, or vibe
+- Keep it light and welcoming
+- Examples: "30s, love classic rock", "anime fans welcome", "chill and respectful vibes"
+
+**Vetting Potential Companions:**
+- Chat before committing to the sale
+- Ask about their interest in the event
+- Share social media if comfortable
+- Trust your instincts
+- Meet in a public place first
+
+**At the Event:**
+- Exchange contact info for coordination
+- Agree on a meetup spot
+- Be punctual and communicative
+- Respect boundaries
+- Have fun together!
 
 ## Best Practices
 

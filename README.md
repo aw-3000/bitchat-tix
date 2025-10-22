@@ -20,6 +20,7 @@ This project is released into the public domain. See the [LICENSE](LICENSE) file
 ### 🎟️ Decentralized Ticket Marketplace
 - **P2P Ticket Exchange**: Buy and sell event tickets directly without intermediaries
 - **No Platform Fees**: Keep 100% of your money - no Ticketmaster or StubHub cuts
+- **Companion Seating**: Find compatible people to sit with - never sit next to a stranger again
 - **Location-Based Discovery**: Find tickets for events near you using geohash channels
 - **Modern "No Scalping Zone"**: Like the old stadium meetup spots, but decentralized
 - **Secure Transactions**: Coordinate exchanges over encrypted P2P channels
@@ -107,18 +108,23 @@ The decentralized ticket exchange leverages the same P2P infrastructure as the m
 
 ### Listing Tickets
 1. **Create a Listing**: Sellers create listings with event details (name, date, venue, section, price)
-2. **Broadcast to Network**: Listings are shared over the current channel (Bluetooth mesh or Nostr geohash)
-3. **Location-Based Discovery**: Buyers discover listings in their area through geohash channels
+2. **Optional Companion Seating**: Indicate if you're attending and want a compatible companion (not a stranger!)
+3. **Broadcast to Network**: Listings are shared over the current channel (Bluetooth mesh or Nostr geohash)
+4. **Location-Based Discovery**: Buyers discover listings in their area through geohash channels
 
 ### Finding and Buying Tickets
 1. **Browse Available Tickets**: Filter by event type, location, or search by name
-2. **Contact Seller**: Initiate a private P2P chat (Bluetooth or Nostr) with the seller
-3. **Negotiate Terms**: Discuss price, meetup location, and payment method
-4. **Complete Exchange**: Meet in person or coordinate remote transfer
+2. **Filter for Companions**: Look for sellers seeking compatible company - marked with 👥 badge
+3. **Contact Seller**: Initiate a private P2P chat (Bluetooth or Nostr) with the seller
+4. **Vet & Chat**: For companion listings, get to know each other to ensure compatibility
+5. **Negotiate Terms**: Discuss price, meetup location, and payment method
+6. **Complete Exchange**: Meet in person or coordinate remote transfer
 
 ### Key Advantages
 - **No Platform Fees**: Unlike Ticketmaster/StubHub (20-30% fees), keep 100% of your money
+- **Companion Seating**: Solve the "extra ticket but don't want a stranger" problem
 - **Direct Communication**: Chat directly with buyers/sellers using encrypted P2P messaging
+- **Social Vetting**: Get to know your seatmate before committing
 - **Local & Global**: Find tickets locally (Bluetooth mesh) or worldwide (Nostr)
 - **Privacy First**: No accounts, no tracking, no data mining
 - **Community-Driven**: Like the original "no scalping zones" outside stadiums, but decentralized
