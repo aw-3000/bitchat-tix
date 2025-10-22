@@ -51,6 +51,50 @@ final class TicketMarketplaceService: ObservableObject {
         return listing
     }
     
+    /// Create a listing from a ticket in the wallet (quick list)
+    func createListingFromWallet(
+        ticketID: String,
+        askingPrice: Decimal,
+        myPeerID: PeerID,
+        myNickname: String,
+        companionPreferences: String? = nil
+    ) -> TicketListing? {
+        // Get ticket from wallet
+        let wallet = TicketWalletService.shared
+        guard let ownedTicket = wallet.activeTickets.first(where: { $0.ticket.id == ticketID }) else {
+            return nil
+        }
+        
+        // Create updated ticket with new price
+        var updatedTicket = ownedTicket.ticket
+        updatedTicket = Ticket(
+            id: updatedTicket.id,
+            eventName: updatedTicket.eventName,
+            eventDate: updatedTicket.eventDate,
+            venue: updatedTicket.venue,
+            section: updatedTicket.section,
+            row: updatedTicket.row,
+            seat: updatedTicket.seat,
+            quantity: updatedTicket.quantity,
+            originalPrice: updatedTicket.originalPrice,
+            askingPrice: askingPrice,
+            currency: updatedTicket.currency,
+            eventType: updatedTicket.eventType,
+            description: updatedTicket.description,
+            geohash: updatedTicket.geohash,
+            verificationData: updatedTicket.verificationData,
+            attendingTogether: companionPreferences != nil,
+            companionPreferences: companionPreferences
+        )
+        
+        return createListing(
+            ticket: updatedTicket,
+            listingType: .sell,
+            myPeerID: myPeerID,
+            myNickname: myNickname
+        )
+    }
+    
     /// Update the status of a listing
     func updateListingStatus(_ listingID: String, status: TicketListing.ListingStatus) {
         if let index = listings.firstIndex(where: { $0.id == listingID }) {
