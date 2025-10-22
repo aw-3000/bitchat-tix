@@ -17,6 +17,7 @@ struct TicketMarketplaceView: View {
     @State private var searchText = ""
     @State private var showCreateListing = false
     @State private var selectedEventType: Ticket.EventType?
+    @State private var showCompanionOnly = false
     
     enum MarketplaceTab {
         case browse
@@ -81,20 +82,31 @@ struct TicketMarketplaceView: View {
             // Event type filter
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    FilterChip(title: "All", isSelected: selectedEventType == nil) {
+                    FilterChip(title: "All", isSelected: selectedEventType == nil && !showCompanionOnly) {
                         selectedEventType = nil
+                        showCompanionOnly = false
+                    }
+                    FilterChip(title: "👥 Companion Seats", isSelected: showCompanionOnly) {
+                        showCompanionOnly.toggle()
+                        if showCompanionOnly {
+                            selectedEventType = nil
+                        }
                     }
                     FilterChip(title: "🎵 Concerts", isSelected: selectedEventType == .concert) {
                         selectedEventType = .concert
+                        showCompanionOnly = false
                     }
                     FilterChip(title: "⚽ Sports", isSelected: selectedEventType == .sports) {
                         selectedEventType = .sports
+                        showCompanionOnly = false
                     }
                     FilterChip(title: "🎭 Theater", isSelected: selectedEventType == .theater) {
                         selectedEventType = .theater
+                        showCompanionOnly = false
                     }
                     FilterChip(title: "🎪 Festivals", isSelected: selectedEventType == .festival) {
                         selectedEventType = .festival
+                        showCompanionOnly = false
                     }
                 }
                 .padding(.horizontal)
@@ -115,6 +127,10 @@ struct TicketMarketplaceView: View {
     
     var filteredListings: [TicketListing] {
         var result = marketplace.availableListings(excludingPeerID: chatViewModel.meshService.myPeerID)
+        
+        if showCompanionOnly {
+            result = result.filter { $0.ticket.attendingTogether }
+        }
         
         if let eventType = selectedEventType {
             result = result.filter { $0.ticket.eventType == eventType }
@@ -254,6 +270,20 @@ struct TicketListingRow: View {
                     Text(listing.ticket.eventName)
                         .font(.headline)
                     Spacer()
+                    if listing.ticket.attendingTogether {
+                        HStack(spacing: 4) {
+                            Image(systemName: "person.2.fill")
+                                .font(.caption2)
+                            Text("COMPANION")
+                                .font(.caption)
+                                .bold()
+                        }
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
+                        .background(Color.accentColor)
+                        .cornerRadius(4)
+                    }
                     if listing.listingType == .buy {
                         Text("WANTED")
                             .font(.caption)

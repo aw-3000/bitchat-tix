@@ -89,6 +89,38 @@ struct TicketDetailsView: View {
                         .cornerRadius(12)
                     }
                     
+                    // Companion Preferences
+                    if listing.ticket.attendingTogether {
+                        VStack(alignment: .leading, spacing: 8) {
+                            HStack {
+                                Image(systemName: "person.2.fill")
+                                    .foregroundColor(.accentColor)
+                                Text("Looking for Compatible Companion")
+                                    .font(.headline)
+                            }
+                            Text("The seller is attending this event and looking for someone compatible to sit with.")
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                            
+                            if let preferences = listing.ticket.companionPreferences, !preferences.isEmpty {
+                                Divider()
+                                Text("Preferences")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                                Text(preferences)
+                                    .font(.body)
+                            }
+                        }
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(Color.accentColor.opacity(0.1))
+                        .cornerRadius(12)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.accentColor.opacity(0.3), lineWidth: 1)
+                        )
+                    }
+                    
                     // Seller Info
                     if !isOwn {
                         VStack(alignment: .leading, spacing: 8) {

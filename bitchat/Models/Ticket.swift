@@ -32,6 +32,10 @@ struct Ticket: Codable, Equatable, Identifiable {
     /// Verification data (QR code, barcode, etc.)
     let verificationData: String?
     
+    /// Companion preferences - for sellers who plan to attend and want compatible company
+    let attendingTogether: Bool
+    let companionPreferences: String?
+    
     enum EventType: String, Codable {
         case concert
         case sports
@@ -56,7 +60,9 @@ struct Ticket: Codable, Equatable, Identifiable {
         eventType: EventType = .other,
         description: String? = nil,
         geohash: String? = nil,
-        verificationData: String? = nil
+        verificationData: String? = nil,
+        attendingTogether: Bool = false,
+        companionPreferences: String? = nil
     ) {
         self.id = id
         self.eventName = eventName
@@ -73,6 +79,8 @@ struct Ticket: Codable, Equatable, Identifiable {
         self.description = description
         self.geohash = geohash
         self.verificationData = verificationData
+        self.attendingTogether = attendingTogether
+        self.companionPreferences = companionPreferences
     }
     
     var displayLocation: String {

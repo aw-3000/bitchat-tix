@@ -372,4 +372,86 @@ final class TicketMarketplaceTests: XCTestCase {
         XCTAssertEqual(decoded?.type, .listingBroadcast)
         XCTAssertEqual(decoded?.listing?.ticket.eventName, "Test Event")
     }
+    
+    // MARK: - Companion Seating Tests
+    
+    func testCompanionTicketCreation() {
+        let ticket = Ticket(
+            eventName: "Indie Rock Concert",
+            eventDate: Date().addingTimeInterval(86400 * 10),
+            venue: "Club Venue",
+            section: "GA",
+            quantity: 1,
+            askingPrice: Decimal(45),
+            currency: "USD",
+            eventType: .concert,
+            attendingTogether: true,
+            companionPreferences: "20s-30s, love indie rock, chill vibe"
+        )
+        
+        XCTAssertTrue(ticket.attendingTogether)
+        XCTAssertEqual(ticket.companionPreferences, "20s-30s, love indie rock, chill vibe")
+        XCTAssertEqual(ticket.eventName, "Indie Rock Concert")
+    }
+    
+    func testCompanionListingWithoutPreferences() {
+        let ticket = Ticket(
+            eventName: "Sports Game",
+            eventDate: Date().addingTimeInterval(86400 * 5),
+            venue: "Stadium",
+            quantity: 1,
+            askingPrice: Decimal(80),
+            eventType: .sports,
+            attendingTogether: true
+        )
+        
+        XCTAssertTrue(ticket.attendingTogether)
+        XCTAssertNil(ticket.companionPreferences)
+    }
+    
+    func testRegularTicketDefaults() {
+        let ticket = Ticket(
+            eventName: "Regular Event",
+            eventDate: Date().addingTimeInterval(86400),
+            venue: "Venue",
+            askingPrice: Decimal(50)
+        )
+        
+        XCTAssertFalse(ticket.attendingTogether)
+        XCTAssertNil(ticket.companionPreferences)
+    }
+    
+    func testCompanionListingCodable() {
+        let ticket = Ticket(
+            eventName: "Festival",
+            eventDate: Date().addingTimeInterval(86400 * 30),
+            venue: "Festival Grounds",
+            quantity: 2,
+            askingPrice: Decimal(120),
+            eventType: .festival,
+            attendingTogether: true,
+            companionPreferences: "Music lovers, good vibes only"
+        )
+        
+        let listing = TicketListing(
+            ticket: ticket,
+            listingType: .sell,
+            sellerPeerID: testPeerID,
+            sellerNickname: "FestivalFan"
+        )
+        
+        // Test encoding/decoding
+        guard let encoded = try? JSONEncoder().encode(listing) else {
+            XCTFail("Failed to encode listing")
+            return
+        }
+        
+        guard let decoded = try? JSONDecoder().decode(TicketListing.self, from: encoded) else {
+            XCTFail("Failed to decode listing")
+            return
+        }
+        
+        XCTAssertEqual(decoded.ticket.attendingTogether, ticket.attendingTogether)
+        XCTAssertEqual(decoded.ticket.companionPreferences, ticket.companionPreferences)
+    }
 }
