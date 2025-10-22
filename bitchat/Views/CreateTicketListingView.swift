@@ -27,6 +27,8 @@ struct CreateTicketListingView: View {
     @State private var originalPrice = ""
     @State private var description = ""
     @State private var currency = "USD"
+    @State private var attendingTogether = false
+    @State private var companionPreferences = ""
     
     private var currentGeohash: String? {
         if case .location(let channel) = LocationChannelManager.shared.selectedChannel {
@@ -92,6 +94,29 @@ struct CreateTicketListingView: View {
                         .frame(height: 100)
                 }
                 .headerProminence(.increased)
+                
+                if listingType == .sell {
+                    Section {
+                        Toggle("I'm attending & looking for a compatible companion", isOn: $attendingTogether)
+                        
+                        if attendingTogether {
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text("Companion Preferences")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                                TextEditor(text: $companionPreferences)
+                                    .frame(height: 80)
+                                Text("e.g., \"20s-30s, love indie rock, chill vibe\"")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                    } header: {
+                        Text("Companion Seating")
+                    } footer: {
+                        Text("Enable this if you're selling an extra ticket but plan to attend. This helps you find someone compatible to sit next to instead of a stranger.")
+                    }
+                }
             }
             .navigationTitle("Create Listing")
             .navigationBarTitleDisplayMode(.inline)
@@ -135,7 +160,9 @@ struct CreateTicketListingView: View {
             currency: currency,
             eventType: eventType,
             description: description.isEmpty ? nil : description,
-            geohash: currentGeohash
+            geohash: currentGeohash,
+            attendingTogether: attendingTogether,
+            companionPreferences: companionPreferences.isEmpty ? nil : companionPreferences
         )
         
         let listing = marketplace.createListing(
